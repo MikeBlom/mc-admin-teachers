@@ -70,6 +70,206 @@ const mockTeachers: Teacher[] = [
     trackers: 7,
     assessments: 4,
     lastLogin: "January 12, 2023"
+  },
+  {
+    id: "6",
+    name: "Dr. Sarah Johnson",
+    status: "Active",
+    school: "Lincoln Elementary School (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 18,
+    assessments: 12,
+    lastLogin: "October 15, 2024"
+  },
+  {
+    id: "7",
+    name: "Mr. David Chen",
+    status: "Active",
+    school: "Roosevelt High School (4 Mastery Levels)",
+    role: "Department Head",
+    trackers: 31,
+    assessments: 22,
+    lastLogin: "October 14, 2024"
+  },
+  {
+    id: "8",
+    name: "Ms. Maria Rodriguez",
+    status: "Active",
+    school: "Washington Middle School (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 14,
+    assessments: 9,
+    lastLogin: "October 13, 2024"
+  },
+  {
+    id: "9",
+    name: "Dr. Michael Thompson",
+    status: "Suspended",
+    school: "Jefferson Elementary (4 Mastery Levels)",
+    role: "Principal",
+    trackers: 2,
+    assessments: 1,
+    lastLogin: "June 20, 2024"
+  },
+  {
+    id: "10",
+    name: "Ms. Jennifer Williams",
+    status: "Active",
+    school: "Adams High School (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 19,
+    assessments: 13,
+    lastLogin: "October 12, 2024"
+  },
+  {
+    id: "11",
+    name: "Mr. Robert Davis",
+    status: "Active",
+    school: "Madison Elementary (4 Mastery Levels)",
+    role: "Assistant Principal",
+    trackers: 25,
+    assessments: 16,
+    lastLogin: "October 11, 2024"
+  },
+  {
+    id: "12",
+    name: "Dr. Lisa Anderson",
+    status: "Active",
+    school: "Monroe Middle School (4 Mastery Levels)",
+    role: "Curriculum Coordinator",
+    trackers: 29,
+    assessments: 19,
+    lastLogin: "October 10, 2024"
+  },
+  {
+    id: "13",
+    name: "Ms. Ashley Brown",
+    status: "Suspended",
+    school: "Jackson Elementary (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 3,
+    assessments: 2,
+    lastLogin: "March 15, 2024"
+  },
+  {
+    id: "14",
+    name: "Mr. Christopher Wilson",
+    status: "Active",
+    school: "Van Buren High School (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 16,
+    assessments: 11,
+    lastLogin: "October 09, 2024"
+  },
+  {
+    id: "15",
+    name: "Dr. Amanda Garcia",
+    status: "Active",
+    school: "Harrison Middle School (4 Mastery Levels)",
+    role: "Technology Coordinator",
+    trackers: 22,
+    assessments: 14,
+    lastLogin: "October 08, 2024"
+  },
+  {
+    id: "16",
+    name: "Ms. Stephanie Miller",
+    status: "Active",
+    school: "Tyler Elementary (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 13,
+    assessments: 8,
+    lastLogin: "October 07, 2024"
+  },
+  {
+    id: "17",
+    name: "Mr. Kevin Taylor",
+    status: "Active",
+    school: "Polk High School (4 Mastery Levels)",
+    role: "Athletic Director",
+    trackers: 8,
+    assessments: 5,
+    lastLogin: "October 06, 2024"
+  },
+  {
+    id: "18",
+    name: "Dr. Rachel Martinez",
+    status: "Suspended",
+    school: "Fillmore Middle School (4 Mastery Levels)",
+    role: "Assistant Principal",
+    trackers: 1,
+    assessments: 0,
+    lastLogin: "August 22, 2024"
+  },
+  {
+    id: "19",
+    name: "Ms. Nicole White",
+    status: "Active",
+    school: "Pierce Elementary (4 Mastery Levels)",
+    role: "Special Education Coordinator",
+    trackers: 17,
+    assessments: 10,
+    lastLogin: "October 05, 2024"
+  },
+  {
+    id: "20",
+    name: "Mr. Daniel Lewis",
+    status: "Active",
+    school: "Buchanan High School (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 21,
+    assessments: 15,
+    lastLogin: "October 04, 2024"
+  },
+  {
+    id: "21",
+    name: "Dr. Kimberly Clark",
+    status: "Active",
+    school: "Johnson Middle School (4 Mastery Levels)",
+    role: "Principal",
+    trackers: 35,
+    assessments: 24,
+    lastLogin: "October 03, 2024"
+  },
+  {
+    id: "22",
+    name: "Ms. Megan Harris",
+    status: "Active",
+    school: "Cleveland Elementary (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 15,
+    assessments: 9,
+    lastLogin: "October 02, 2024"
+  },
+  {
+    id: "23",
+    name: "Mr. Joseph Walker",
+    status: "Suspended",
+    school: "McKinley High School (4 Mastery Levels)",
+    role: "Counselor",
+    trackers: 4,
+    assessments: 2,
+    lastLogin: "July 18, 2024"
+  },
+  {
+    id: "24",
+    name: "Dr. Angela Young",
+    status: "Active",
+    school: "Roosevelt Elementary (4 Mastery Levels)",
+    role: "Reading Specialist",
+    trackers: 20,
+    assessments: 13,
+    lastLogin: "October 01, 2024"
+  },
+  {
+    id: "25",
+    name: "Ms. Laura King",
+    status: "Active",
+    school: "Taft Middle School (4 Mastery Levels)",
+    role: "Teacher",
+    trackers: 11,
+    assessments: 7,
+    lastLogin: "September 30, 2024"
   }
 ];
 

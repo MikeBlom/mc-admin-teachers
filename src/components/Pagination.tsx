@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { 
   Select, 
   SelectContent, 
@@ -15,6 +17,7 @@ interface PaginationProps {
   totalItems: number;
   onPageChange: (page: number) => void;
   onItemsPerPageChange: (itemsPerPage: number) => void;
+  variant?: "default" | "input";
 }
 
 const Pagination = ({ 
@@ -23,8 +26,35 @@ const Pagination = ({
   itemsPerPage, 
   totalItems,
   onPageChange, 
-  onItemsPerPageChange 
+  onItemsPerPageChange,
+  variant = "input"
 }: PaginationProps) => {
+  const [inputPage, setInputPage] = useState(currentPage.toString());
+
+  const handlePageInputChange = (value: string) => {
+    setInputPage(value);
+  };
+
+  const handlePageInputSubmit = () => {
+    const pageNum = parseInt(inputPage);
+    if (pageNum >= 1 && pageNum <= totalPages) {
+      onPageChange(pageNum);
+    } else {
+      setInputPage(currentPage.toString());
+    }
+  };
+
+  const handlePageInputKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handlePageInputSubmit();
+    }
+  };
+
+  // Update input when currentPage changes
+  useEffect(() => {
+    setInputPage(currentPage.toString());
+  }, [currentPage]);
+
   const getVisiblePages = () => {
     const pages = [];
     const showEllipsis = totalPages > 7;
@@ -109,31 +139,49 @@ const Pagination = ({
           <ChevronLeft className="h-4 w-4" />
         </Button>
 
-        {/* Page numbers */}
-        <div className="flex items-center gap-1">
-          {getVisiblePages().map((page, index) => {
-            if (page === 'ellipsis') {
+        {/* Page navigation - input or buttons variant */}
+        {variant === "input" ? (
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">Page</span>
+            <Input
+              type="number"
+              min="1"
+              max={totalPages}
+              value={inputPage}
+              onChange={(e) => handlePageInputChange(e.target.value)}
+              onKeyPress={handlePageInputKeyPress}
+              onBlur={handlePageInputSubmit}
+              className="w-16 h-9 text-center"
+              aria-label="Go to page"
+            />
+            <span className="text-sm text-muted-foreground">of {totalPages}</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-1">
+            {getVisiblePages().map((page, index) => {
+              if (page === 'ellipsis') {
+                return (
+                  <div key={`ellipsis-${index}`} className="px-2">
+                    <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                );
+              }
+              
               return (
-                <div key={`ellipsis-${index}`} className="px-2">
-                  <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
-                </div>
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="icon"
+                  onClick={() => onPageChange(page as number)}
+                  aria-label={`Go to page ${page}`}
+                  aria-current={currentPage === page ? "page" : undefined}
+                >
+                  {page}
+                </Button>
               );
-            }
-            
-            return (
-              <Button
-                key={page}
-                variant={currentPage === page ? "default" : "outline"}
-                size="icon"
-                onClick={() => onPageChange(page as number)}
-                aria-label={`Go to page ${page}`}
-                aria-current={currentPage === page ? "page" : undefined}
-              >
-                {page}
-              </Button>
-            );
-          })}
-        </div>
+            })}
+          </div>
+        )}
 
         {/* Next button */}
         <Button
