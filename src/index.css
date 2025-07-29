@@ -8,37 +8,38 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 215 25% 27%;
+    /* Instructure Design inspired color palette - clean, professional */
+    --background: 0 0% 100%;
+    --foreground: 210 22% 22%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card-foreground: 210 22% 22%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover-foreground: 210 22% 22%;
 
-    --primary: 217 91% 60%;
+    --primary: 205 100% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 248 250 252;
-    --secondary-foreground: 215 25% 27%;
+    --secondary: 210 17% 95%;
+    --secondary-foreground: 210 22% 22%;
 
-    --muted: 248 250 252;
-    --muted-foreground: 215 16% 47%;
+    --muted: 210 17% 95%;
+    --muted-foreground: 215 25% 27%;
 
-    --accent: 220 91% 97%;
-    --accent-foreground: 217 91% 60%;
+    --accent: 205 100% 96%;
+    --accent-foreground: 205 100% 40%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 74% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 91% 60%;
+    --border: 210 20% 82%;
+    --input: 210 20% 82%;
+    --ring: 205 100% 40%;
 
-    --success: 142 76% 36%;
-    --warning: 38 92% 50%;
-    --info: 217 91% 60%;
+    --success: 142 69% 58%;
+    --warning: 38 100% 50%;
+    --info: 205 100% 40%;
 
     --radius: 0.5rem;
 

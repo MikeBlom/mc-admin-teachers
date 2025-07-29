@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { MoreHorizontal, LogIn, Edit3, Pause, Trash2, RotateCcw } from "lucide-react";
+import { MoreHorizontal, LogIn, Edit3, Pause, Trash2, RotateCcw, KeyRound } from "lucide-react";
 
 interface Teacher {
   id: string;
@@ -18,6 +18,7 @@ interface Teacher {
   school: string;
   role: string;
   trackers: number;
+  assessments: number;
   lastLogin: string;
   avatar?: string;
 }
@@ -35,11 +36,11 @@ interface TeacherCardProps {
 const getStatusColor = (status: string) => {
   switch (status) {
     case "Active":
-      return "bg-green-100 text-green-800 border-green-200";
+      return "bg-success/10 text-success border-success/20";
     case "Suspended":
-      return "bg-red-100 text-red-800 border-red-200";
+      return "bg-destructive/10 text-destructive border-destructive/20";
     default:
-      return "bg-gray-100 text-gray-800 border-gray-200";
+      return "bg-muted text-muted-foreground border-border";
   }
 };
 
@@ -55,20 +56,20 @@ const TeacherCard = ({
   const initials = teacher.name.split(' ').map(n => n[0]).join('').toUpperCase();
 
   return (
-    <Card className="hover:shadow-md transition-shadow duration-200">
+    <Card className="hover:shadow-lg transition-all duration-200 border-border/50">
       <CardContent className="p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4">
           {/* Avatar and basic info */}
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            <Avatar className="h-12 w-12 shrink-0">
+          <div className="flex items-center gap-4 flex-1 min-w-0">
+            <Avatar className="h-14 w-14 shrink-0 border-2 border-border/30">
               <AvatarImage src={teacher.avatar} alt={`${teacher.name} profile picture`} />
-              <AvatarFallback className="bg-primary/10 text-primary font-medium">
+              <AvatarFallback className="bg-primary/10 text-primary font-semibold text-lg">
                 {initials}
               </AvatarFallback>
             </Avatar>
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-foreground truncate">{teacher.name}</h3>
+              <h3 className="font-semibold text-lg text-foreground truncate">{teacher.name}</h3>
               <div className="flex items-center gap-2 mt-1">
                 <Badge variant="outline" className={getStatusColor(teacher.status)}>
                   {teacher.status}
@@ -77,57 +78,72 @@ const TeacherCard = ({
             </div>
           </div>
 
-          {/* Details - responsive layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 flex-1">
+          {/* Data grid - responsive layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 flex-1">
             <div>
-              <p className="text-sm text-muted-foreground">School</p>
-              <p className="text-sm font-medium truncate" title={teacher.school}>
+              <p className="text-sm font-medium text-muted-foreground mb-1">School</p>
+              <p className="text-sm font-medium text-foreground truncate" title={teacher.school}>
                 {teacher.school}
               </p>
             </div>
             
             <div>
-              <p className="text-sm text-muted-foreground">Role</p>
-              <p className="text-sm font-medium">{teacher.role}</p>
+              <p className="text-sm font-medium text-muted-foreground mb-1">Role</p>
+              <p className="text-sm font-medium text-foreground">{teacher.role}</p>
             </div>
             
             <div>
-              <p className="text-sm text-muted-foreground">Last Login</p>
-              <p className="text-sm font-medium">{teacher.lastLogin}</p>
+              <p className="text-sm font-medium text-muted-foreground mb-1">Trackers</p>
+              <p className="text-sm font-semibold text-primary">{teacher.trackers}</p>
+            </div>
+            
+            <div>
+              <p className="text-sm font-medium text-muted-foreground mb-1">Assessments</p>
+              <p className="text-sm font-semibold text-primary">{teacher.assessments}</p>
+            </div>
+            
+            <div>
+              <p className="text-sm font-medium text-muted-foreground mb-1">Last Login</p>
+              <p className="text-sm font-medium text-foreground">{teacher.lastLogin}</p>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-2 sm:shrink-0">
+          <div className="flex items-center gap-3 lg:shrink-0">
             <Button
-              variant="outline"
+              onClick={() => onEdit(teacher.id)}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6"
               size="sm"
-              onClick={() => onResetPassword(teacher.id)}
-              className="text-xs"
             >
-              Reset Password
+              <Edit3 className="mr-2 h-4 w-4" />
+              Edit
             </Button>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label={`Actions for ${teacher.name}`}>
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="border-border/50 hover:bg-muted"
+                  aria-label={`More actions for ${teacher.name}`}
+                >
                   <MoreHorizontal className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem onClick={() => onLogin(teacher.id)}>
+              <DropdownMenuContent align="end" className="w-48 bg-popover border-border/50">
+                <DropdownMenuItem onClick={() => onLogin(teacher.id)} className="hover:bg-accent">
                   <LogIn className="mr-2 h-4 w-4" />
-                  Login
+                  Login as User
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => onEdit(teacher.id)}>
-                  <Edit3 className="mr-2 h-4 w-4" />
-                  Edit
+                <DropdownMenuItem onClick={() => onResetPassword(teacher.id)} className="hover:bg-accent">
+                  <KeyRound className="mr-2 h-4 w-4" />
+                  Reset Password
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 {teacher.status === "Active" ? (
                   <DropdownMenuItem 
                     onClick={() => onSuspend(teacher.id)}
-                    className="text-warning"
+                    className="text-warning hover:bg-warning/10"
                   >
                     <Pause className="mr-2 h-4 w-4" />
                     Suspend
@@ -135,7 +151,7 @@ const TeacherCard = ({
                 ) : (
                   <DropdownMenuItem 
                     onClick={() => onUnsuspend(teacher.id)}
-                    className="text-success"
+                    className="text-success hover:bg-success/10"
                   >
                     <RotateCcw className="mr-2 h-4 w-4" />
                     Unsuspend
@@ -144,7 +160,7 @@ const TeacherCard = ({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem 
                   onClick={() => onDelete(teacher.id)}
-                  className="text-destructive"
+                  className="text-destructive hover:bg-destructive/10"
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Delete

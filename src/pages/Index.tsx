@@ -14,6 +14,7 @@ interface Teacher {
   school: string;
   role: string;
   trackers: number;
+  assessments: number;
   lastLogin: string;
   avatar?: string;
 }
@@ -25,7 +26,8 @@ const mockTeachers: Teacher[] = [
     status: "Active",
     school: "Teachers In Transition School (4 Mastery Levels)",
     role: "School Administrator",
-    trackers: 0,
+    trackers: 12,
+    assessments: 8,
     lastLogin: "May 06, 2024"
   },
   {
@@ -35,6 +37,7 @@ const mockTeachers: Teacher[] = [
     school: "MasteryConnect (4 Mastery Levels)",
     role: "School Administrator",
     trackers: 0,
+    assessments: 0,
     lastLogin: "September 10, 2013"
   },
   {
@@ -43,7 +46,8 @@ const mockTeachers: Teacher[] = [
     status: "Suspended",
     school: "MasteryConnect (4 Mastery Levels)",
     role: "Benchmark Facilitator, Limited District Admin",
-    trackers: 0,
+    trackers: 5,
+    assessments: 3,
     lastLogin: "August 15, 2017",
     avatar: "/lovable-uploads/afa47cad-338f-40e9-a6ad-5adac5d67db7.png"
   },
@@ -53,7 +57,8 @@ const mockTeachers: Teacher[] = [
     status: "Active",
     school: "PS_Middle_School (4 Mastery Levels)",
     role: "Teacher",
-    trackers: 0,
+    trackers: 23,
+    assessments: 15,
     lastLogin: "September 18, 2024"
   },
   {
@@ -62,7 +67,8 @@ const mockTeachers: Teacher[] = [
     status: "Suspended",
     school: "Teachers In Transition School (4 Mastery Levels)",
     role: "School Administrator, District Item Author",
-    trackers: 0,
+    trackers: 7,
+    assessments: 4,
     lastLogin: "January 12, 2023"
   }
 ];
